@@ -149,7 +149,7 @@ Building the shared library:
     cd llvm-pass-skeleton/build
     ninja DynamicCallGraphPass
 
-Running the static call graph pass:
+Running the dynamic call graph pass:
 
     clang -Xclang -load -Xclang \ ~/llvm-pass-skeleton/build/dynamic-callgraph/libDynamicCallGraphPass.so \
     ~/llvm-pass-skeleton/build/utils/callgraph/libcallgraph.so \
