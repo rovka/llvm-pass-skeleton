@@ -152,7 +152,9 @@ Building the shared library:
 Running the static call graph pass:
 
     clang -Xclang -load -Xclang \ ~/llvm-pass-skeleton/build/dynamic-callgraph/libDynamicCallGraphPass.so \
-    -lcallgraph ~/llvm-pass-skeleton/samples/d.c -o d
+    ~/llvm-pass-skeleton/build/utils/callgraph/libcallgraph.so \
+    -Wl,-rpath,~/llvm-pass-skeleton/build/utils/callgraph \
+    ~/llvm-pass-skeleton/samples/d.c -o d
 
 or (after you obtain `d.ll`):
 
@@ -160,9 +162,11 @@ or (after you obtain `d.ll`):
     ~/llvm-pass-skeleton/build/dynamic-callgraph/libDynamicCallGraphPass.so \
     -dynamic-call-graph path/to/d.ll -S -o d-instr.ll
 
-    clang -lcallgraph d-instr.ll -o d
+    clang d-instr.ll -o d \
+    ~/llvm-pass-skeleton/build/utils/callgraph/libcallgraph.so \
+    -Wl,-rpath,~/llvm-pass-skeleton/build/utils/callgraph
 
-Notice that we now have to obtain an executable, and we also have to link `-lcallgraph` into it. We can obtain different dynamic call graphs from different invocations of the executable, for instance:
+Notice that we now have to obtain an executable, and we also have to link the `callgraph` library into it (if you install it on your system, it's enough to use `-lcallgraph`, there's no need for the `rpath` magic). We can obtain different dynamic call graphs from different invocations of the executable, for instance:
 
     ./d
     xdot callgraph.dot ; Call graph corresponding to the error path

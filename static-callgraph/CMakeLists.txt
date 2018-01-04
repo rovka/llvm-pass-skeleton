@@ -1,3 +1,5 @@
+include_directories(${callgraph_SOURCE_DIR})
+
 add_library(StaticCallGraphPass MODULE
     # List your source files here.
     StaticCallGraph.cpp
