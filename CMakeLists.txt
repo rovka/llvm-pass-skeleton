@@ -5,6 +5,8 @@ add_definitions(${LLVM_DEFINITIONS})
 include_directories(${LLVM_INCLUDE_DIRS})
 link_directories(${LLVM_LIBRARY_DIRS})
 
+add_subdirectory(utils)
+
 add_subdirectory(skeleton)
 add_subdirectory(static-callgraph)
 add_subdirectory(dynamic-callgraph)

@@ -32,7 +32,7 @@ add_custom_target(d-instr.ll ALL
   DEPENDS DynamicCallGraphPass d.ll VERBATIM)
 
 add_custom_target(d ALL
-  clang d-instr.ll -lcallgraph -o d
+  clang d-instr.ll $<TARGET_FILE:callgraph> -Wl,-rpath,${callgraph_BINARY_DIR} -o d
   DEPENDS d-instr.ll VERBATIM)
 
 add_custom_target(dynamic-cg-error

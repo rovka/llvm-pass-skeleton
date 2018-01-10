@@ -7,7 +7,7 @@
 #include "llvm/Transforms/IPO/PassManagerBuilder.h"
 
 extern "C" {
-#include "callgraph/cg.h"
+#include "callgraph.h"
 }
 
 #define DEBUG_TYPE "static-call-graph"
