@@ -25,9 +25,10 @@ Binary form (bitcode):
 ## Transforming LLVM IR:
 By default, `opt` produces bitcode. Use `-S` to obtain textual IR.
 
-    opt -pass1 [...] -passN hello.ll -o hello.bc
 
-    opt -pass1 [...] -passN hello.ll -S -o hello.ll
+    opt -p pass1,[...],passN hello.ll -o hello.bc
+
+    opt -p pass1,[...],passN hello.ll -S -o hello.ll
 
 ## Obtaining machine code:
 By default, `llc` produces assembly. Use `-filetype=obj` to obtain an object file.
@@ -43,4 +44,4 @@ By default, `llc` produces assembly. Use `-filetype=obj` to obtain an object fil
 ## Verifying an IR module:
 This is useful for checking that your pass created a well-formed module:
 
-    opt -verify in.ll -o /dev/null
+    opt -p verify in.ll -o /dev/null
