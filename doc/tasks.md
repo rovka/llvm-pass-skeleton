@@ -118,7 +118,7 @@ or (after you obtain `d.ll`):
 
     opt -load \
     ~/llvm-pass-skeleton/build/static-callgraph/libStaticCallGraphPass.so \
-    -static-call-graph path/to/d.ll -o /dev/null
+    -p static-call-graph path/to/d.ll -o /dev/null
 
 For convenience, you can use the shortcut target:
 
@@ -152,7 +152,7 @@ or (after you obtain `d.ll`):
 
     opt -load \
     ~/llvm-pass-skeleton/build/dynamic-callgraph/libDynamicCallGraphPass.so \
-    -dynamic-call-graph path/to/d.ll -S -o d-instr.ll
+    -p dynamic-call-graph path/to/d.ll -S -o d-instr.ll
 
     clang d-instr.ll -o d \
     ~/llvm-pass-skeleton/build/utils/callgraph/libcallgraph.so \
